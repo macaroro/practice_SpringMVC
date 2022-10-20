@@ -3,20 +3,23 @@
        "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 <tiles-definitions>
-  <definition name="notice.list" template="/WEB-INF/view/customer/inc/layoyt.jsp">
-    <put-attribute name="title" value="Tiles tutorial homepage" />
+  <definition name="root.*" template="/WEB-INF/view/inc/layout.jsp">
+    <put-attribute name="title" value="공지사항"/>
     <put-attribute name="header" value="/WEB-INF/view/inc/header.jsp" />
-    <put-attribute name="visual" value="/WEB-INF/view/customer/inc/visual.jsp" />
-    <put-attribute name="aside" value="/WEB-INF/view/customer/inc/aside.jsp" />
-    <put-attribute name="body" value="/WEB-INF/view/customer/notice/list.jsp" />
+    <put-attribute name="body" value="/WEB-INF/view/{1}.jsp" />
     <put-attribute name="footer" value="/WEB-INF/view/inc/footer.jsp" />
   </definition>
-  <definition name="notice.detail" template="/WEB-INF/view/customer/inc/layoyt.jsp">
-    <put-attribute name="title" value="Tiles tutorial homepage" />
+
+  <definition name="notice.*" template="/WEB-INF/view/customer/icn/layout.jsp">
+    <put-attribute name="title" value="공지사항"/>
     <put-attribute name="header" value="/WEB-INF/view/inc/header.jsp" />
-    <put-attribute name="visual" value="/WEB-INF/view/customer/inc/visual.jsp" />
-    <put-attribute name="aside" value="/WEB-INF/view/customer/inc/aside.jsp" />
-     <put-attribute name="body" value="/WEB-INF/view/customer/notice/detail.jsp" />
+    <put-attribute name="visual" value="/WEB-INF/view/customer/icn/visual.jsp" />
+    <put-attribute name="aside" value="/WEB-INF/view/customer/icn/aside.jsp" />
+    <put-attribute name="body" value="/WEB-INF/view/customer/notice/{1}.jsp" />
+    <!-- {1}은 첫번째 와일드 카드의 값을 가져온다 (*와일드 카드)-->
     <put-attribute name="footer" value="/WEB-INF/view/inc/footer.jsp" />
   </definition>
+  
+  
+
 </tiles-definitions>

@@ -11,7 +11,7 @@ public class IndexController implements Controller {
 
 	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		System.out.println(">>>>");
-		ModelAndView mv = new ModelAndView("index");
+		ModelAndView mv = new ModelAndView("root.index");
 		mv.addObject("data","µÇ³ª¿ä");
 	
 		return mv;
