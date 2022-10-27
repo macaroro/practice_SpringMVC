@@ -11,9 +11,12 @@
         <!-- beans 만 있던 파일에 mvc 스키마 파일을 쓸수 있게 함 -->
 
     <bean id="/index" class="com.practice_SpringMVC.controller.IndexController" />
+    <!-- id는 스프링 컨테이너에서 유일하게 식별할 수 있는 이름(url), class는 불러내는 파일의 주소 -->
     <bean id="/notice/list" class="com.practice_SpringMVC.controller.notice.ListController">
     <property name="noticeService" ref="noticeService"/>
-    
+    <!-- name은 setNoticeService라는 세터를 통해 값을 주입 ref는 아래의 id가 noticeSercive인  bean을 참조 
+     자료형은 interface의 이름이 된다-->
+   <!-- 이는 서비스 객체를 만들기 위한 것이다. -->
     </bean>
     
     
@@ -42,7 +45,17 @@
 	<mvc:resources location="/static/" mapping="/**"></mvc:resources>
 	<!-- location은 내가 파일을 넣을 폴더의 이름(내가 정함) ㅡmppping는 그 파일이 있는 루트  -->
 	
-	<bean id= "noticeService" class="com.practice_SpringMVC.service.NoticeService" />
+	<bean id= "noticeService" class="com.practice_SpringMVC.service.jdbc.JDBCNoticeService">
+	<property name="dataSource" ref="dataSource"/>
+	</bean>
+	
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+	<!--DB접속 시에 필요한 정보를 셋팅  보통 name은 그 setter의 이름을 가져옴-->
+	<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
+	<property name="url" value="jdbc:oracle:thin:@localhost:1521/xe"/>
+	<property name="username" value="min"/>
+	<property name="password" value="0826"/>
+	</bean>
 	</beans>
 	
 	

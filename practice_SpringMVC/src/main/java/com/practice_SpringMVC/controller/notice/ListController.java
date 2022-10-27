@@ -12,6 +12,7 @@ import com.practice_SpringMVC.entity.Notice;
 import com.practice_SpringMVC.service.NoticeService;
 
 public class ListController implements Controller{
+	//noticeSercvice의 인터페이스를 상속
 	
 	private NoticeService noticeService;
 
