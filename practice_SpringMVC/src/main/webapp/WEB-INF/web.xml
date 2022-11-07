@@ -6,10 +6,32 @@
                       http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
   version="4.0"
   metadata-complete="true">
-
-<servlet>
-<servlet-name>dispatcher</servlet-name>
-<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+  
+  
+  
+   <listener><!-- 파일의 위치 설정시 필요 -->
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>
+			/WEB-INF/spring/service-context.xml
+			/WEB-INF/spring/security-context.xml
+		</param-value>
+	</context-param>
+	
+	
+	<servlet><!-- 파일의 위치 설정시 필요 -->
+	<servlet-name>dispatcher</servlet-name>
+	<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+	<init-param>
+	   <param-name>contextConfigLocation</param-name>
+	   <param-value>/WEB-INF/spring/servlet-context.xml</param-value>
+	</init-param>
+	<!-- 이 서블릿이 톰캣이 시작될때 로드되어라(숫자는 우선순위) -->
+	<load-on-startup>1</load-on-startup>
+	<!-- 비동기적으로 로드 -->
+	<async-supported>true</async-supported>
 </servlet>
 <servlet-mapping>
 <servlet-name>dispatcher</servlet-name>

@@ -12,11 +12,18 @@ import java.util.List;
 
 import javax.sql.DataSource;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
+
 import com.practice_SpringMVC.entity.Notice;
 import com.practice_SpringMVC.service.NoticeService;
 
 
-
+@Service
+//컨테이너에 담고 이를 활용할 수 있음
+//하지만 component 보단 특화된 이름을 가지느 @을 쓰는 것이 좋음
+//ex>controller, service....(역할이 분명하게 보임)
 public class JDBCNoticeService implements NoticeService {
 	//인터페이스를 구현
 	
@@ -25,12 +32,9 @@ public class JDBCNoticeService implements NoticeService {
 //	private String pwd = "0826";
 //	private String driver = "oracle.jdbc.driver.OracleDriver";
 	
+	@Autowired
 	private DataSource dataSource;//인터페이스
-	
 
-	public void setDataSource(DataSource dataSource) {
-		this.dataSource = dataSource;
-	}
 
 	public List<Notice> getList(int page, String field, String query) throws ClassNotFoundException, SQLException{
 		

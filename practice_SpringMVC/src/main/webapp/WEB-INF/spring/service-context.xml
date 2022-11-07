@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/mvc 
+        https://www.springframework.org/schema/mvc/spring-mvc.xsd
+        http://www.springframework.org/schema/context
+        https://www.springframework.org/schema/context/spring-context.xsd">
+        <!-- spring 설정 파일을 나누는 이유는 협업 시 맡은 일이 다르고
+             이후 수정 및 보수시에 용이하기 위해 -->
+
+<!--     <context:annotation-config/>이 설정파일은 여러게의 xml로 나눴다면 다 해주어야 함
+ -->    
+    <!-- 이것을 쓰게 되면 그 패키지에 있는 파일들의 @ 부분을 찾아서 객체좌 해주므로
+       위에의 config 설정 필요없음  -->
+    <context:component-scan base-package="com.practice_SpringMVC.service"/>
+
+	
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+	<!--DB접속 시에 필요한 정보를 셋팅  보통 name은 그 setter의 이름을 가져옴-->
+	<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
+	<property name="url" value="jdbc:oracle:thin:@localhost:1521/xe"/>
+	<property name="username" value="min"/>
+	<property name="password" value="0826"/>
+	</bean>
+	
+<!-- 	<bean id= "noticeService" class="com.practice_SpringMVC.service.jdbc.JDBCNoticeService">
+	<property name="dataSource" ref="dataSource"/>
+ </bean>-->	
+	
+	</beans>
+	
+	
+	
+	

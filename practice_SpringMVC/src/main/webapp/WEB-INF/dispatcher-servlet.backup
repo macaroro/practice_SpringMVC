@@ -8,15 +8,15 @@
         
         http://www.springframework.org/schema/mvc 
         https://www.springframework.org/schema/mvc/spring-mvc.xsd">
-        <!-- beans ë§Œ ìžˆë˜ íŒŒì¼ì— mvc ìŠ¤í‚¤ë§ˆ íŒŒì¼ì„ ì“¸ìˆ˜ ìžˆê²Œ í•¨ -->
+        <!-- beans ¸¸ ÀÖ´ø ÆÄÀÏ¿¡ mvc ½ºÅ°¸¶ ÆÄÀÏÀ» ¾µ¼ö ÀÖ°Ô ÇÔ -->
 
     <bean id="/index" class="com.practice_SpringMVC.controller.IndexController" />
-    <!-- idëŠ” ìŠ¤í”„ë§ ì»¨í…Œì´ë„ˆì—ì„œ ìœ ì¼í•˜ê²Œ ì‹ë³„í•  ìˆ˜ ìžˆëŠ” ì´ë¦„(url), classëŠ” ë¶ˆëŸ¬ë‚´ëŠ” íŒŒì¼ì˜ ì£¼ì†Œ -->
+    <!-- id´Â ½ºÇÁ¸µ ÄÁÅ×ÀÌ³Ê¿¡¼­ À¯ÀÏÇÏ°Ô ½Äº°ÇÒ ¼ö ÀÖ´Â ÀÌ¸§(url), class´Â ºÒ·¯³»´Â ÆÄÀÏÀÇ ÁÖ¼Ò -->
     <bean id="/notice/list" class="com.practice_SpringMVC.controller.notice.ListController">
     <property name="noticeService" ref="noticeService"/>
-    <!-- nameì€ setNoticeServiceë¼ëŠ” ì„¸í„°ë¥¼ í†µí•´ ê°’ì„ ì£¼ìž… refëŠ” ì•„ëž˜ì˜ idê°€ noticeSerciveì¸  beanì„ ì°¸ì¡° 
-     ìžë£Œí˜•ì€ interfaceì˜ ì´ë¦„ì´ ëœë‹¤-->
-   <!-- ì´ëŠ” ì„œë¹„ìŠ¤ ê°ì²´ë¥¼ ë§Œë“¤ê¸° ìœ„í•œ ê²ƒì´ë‹¤. -->
+    <!-- nameÀº setNoticeService¶ó´Â ¼¼ÅÍ¸¦ ÅëÇØ °ªÀ» ÁÖÀÔ ref´Â ¾Æ·¡ÀÇ id°¡ noticeSerciveÀÎ  beanÀ» ÂüÁ¶ 
+     ÀÚ·áÇüÀº interfaceÀÇ ÀÌ¸§ÀÌ µÈ´Ù-->
+   <!-- ÀÌ´Â ¼­ºñ½º °´Ã¼¸¦ ¸¸µé±â À§ÇÑ °ÍÀÌ´Ù. -->
     </bean>
     
     
@@ -28,7 +28,7 @@
 		<property name="viewClass"
 			value="org.springframework.web.servlet.view.tiles3.TilesView" />
 		<property name="order" value="1" />
-		<!-- viewresolverì´ ë‘ê°œ ìžˆìœ¼ë¯€ë¡œ ìˆœì„œê°€ í—·ê°ˆë¦¬ë©´ ì•ˆë˜ë¯€ë¡œ orderë¥¼ ë¶™ì—¬ì¤Œ -->
+		<!-- viewresolverÀÌ µÎ°³ ÀÖÀ¸¹Ç·Î ¼ø¼­°¡ Çò°¥¸®¸é ¾ÈµÇ¹Ç·Î order¸¦ ºÙ¿©ÁÜ -->
 	</bean>
 
 	<bean
@@ -43,14 +43,14 @@
 	</bean>
 	
 	<mvc:resources location="/static/" mapping="/**"></mvc:resources>
-	<!-- locationì€ ë‚´ê°€ íŒŒì¼ì„ ë„£ì„ í´ë”ì˜ ì´ë¦„(ë‚´ê°€ ì •í•¨) ã…¡mpppingëŠ” ê·¸ íŒŒì¼ì´ ìžˆëŠ” ë£¨íŠ¸  -->
+	<!-- locationÀº ³»°¡ ÆÄÀÏÀ» ³ÖÀ» Æú´õÀÇ ÀÌ¸§(³»°¡ Á¤ÇÔ) ¤Ñmppping´Â ±× ÆÄÀÏÀÌ ÀÖ´Â ·çÆ®  -->
 	
 	<bean id= "noticeService" class="com.practice_SpringMVC.service.jdbc.JDBCNoticeService">
 	<property name="dataSource" ref="dataSource"/>
 	</bean>
 	
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-	<!--DBì ‘ì† ì‹œì— í•„ìš”í•œ ì •ë³´ë¥¼ ì…‹íŒ…  ë³´í†µ nameì€ ê·¸ setterì˜ ì´ë¦„ì„ ê°€ì ¸ì˜´-->
+	<!--DBÁ¢¼Ó ½Ã¿¡ ÇÊ¿äÇÑ Á¤º¸¸¦ ¼ÂÆÃ  º¸Åë nameÀº ±× setterÀÇ ÀÌ¸§À» °¡Á®¿È-->
 	<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
 	<property name="url" value="jdbc:oracle:thin:@localhost:1521/xe"/>
 	<property name="username" value="min"/>
