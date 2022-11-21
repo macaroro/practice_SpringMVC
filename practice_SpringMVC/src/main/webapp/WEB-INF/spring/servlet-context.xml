@@ -14,14 +14,7 @@
 
     <context:component-scan base-package="com.practice_SpringMVC.controller"/>
 
-<!--    <bean id="/index" class="com.practice_SpringMVC.controller.IndexController" /> 
- <bean id="/notice/list" class="com.practice_SpringMVC.controller.notice.ListController"> 
-   <property name="noticeService" ref="noticeService"/> 
-    </bean> 
-    
-    
-  
-    <bean id="/notice/detail" class="com.practice_SpringMVC.controller.notice.DetailController" /> --> 
+
    
   	<bean
 		class="org.springframework.web.servlet.view.UrlBasedViewResolver">
@@ -46,7 +39,18 @@
 	<!-- location은 내가 파일을 넣을 폴더의 이름(내가 정함) ㅡmppping는 그 파일이 있는 루트  -->
 	
 	<!-- 맵핑 -->
-	<mvc:annotation-driven/>
+	
+<mvc:annotation-driven>
+	<mvc:message-converters> <!-- @ResponseBody로 String 처리할때 한글처리 -->
+		<bean class="org.springframework.http.converter.StringHttpMessageConverter">
+			<property name="supportedMediaTypes">
+				<list>
+					<value>text/html;charset=UTF-8</value>
+				</list>
+			</property>
+		</bean>
+	</mvc:message-converters>
+</mvc:annotation-driven><!-- url관련 annotation -->
 	</beans>
 	
 	

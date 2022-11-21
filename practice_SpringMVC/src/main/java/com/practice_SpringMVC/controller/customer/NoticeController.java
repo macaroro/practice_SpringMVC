@@ -1,5 +1,4 @@
-package com.practice_SpringMVC.controller.notice;
-
+package com.practice_SpringMVC.controller.customer;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -11,7 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.practice_SpringMVC.entity.Notice;
 import com.practice_SpringMVC.service.NoticeService;
 
-@Controller
+
+@Controller//°´Ã¼È­
 public class NoticeController {
 	
 	
@@ -21,7 +21,7 @@ public class NoticeController {
 
 	
 
-	@RequestMapping("/notice/list")
+	@RequestMapping("/customer/notice/list")
 	public String list(Model model) throws ClassNotFoundException, SQLException {
 	List<Notice> list = noticeService.getList(1, "TITLE","");
 	model.addAttribute("list", list);
@@ -30,22 +30,9 @@ public class NoticeController {
 		
 	}
 	
-	@RequestMapping("/notice/detail")
+	@RequestMapping("/customer/notice/detail")
 	public String detail() {
 		return "notice.detail";
 		
 	}
-
-
-//	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
-//		
-//		
-//		
-//		ModelAndView mv = new ModelAndView("notice.list");
-//		List<Notice> list = noticeService.getList(1, "TITLE","");
-//		mv.addObject("list",list);
-//	
-//		return mv;
-//	}
-
 }
