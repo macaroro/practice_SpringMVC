@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.practice_SpringMVC.entity.Notice;
 import com.practice_SpringMVC.service.NoticeService;
@@ -22,10 +23,12 @@ public class NoticeController {
 	
 
 	@RequestMapping("/customer/notice/list")
-	public String list(Model model) throws ClassNotFoundException, SQLException {
-	List<Notice> list = noticeService.getList(1, "TITLE","");
-	model.addAttribute("list", list);
+	//@RequestParam("p")눈 url에서 받아오는 ?p를 컨트롤러에서는 page로 받겟다(기본값 지정가능)
+	public String list(@RequestParam(value="p", defaultValue = "1") String page) throws ClassNotFoundException, SQLException {
+	//List<Notice> list = noticeService.getList(1, "TITLE","");
+	//model.addAttribute("list", list);
 	
+		System.out.println("page:"+ page);
 		return "notice.list";
 		
 	}
